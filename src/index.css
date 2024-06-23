@@ -1,0 +1,1080 @@
+
+
+:root {
+    --white: #F0F0F0;
+    /* --cream: #f5f4ed; */
+    --cream: darkgray;
+    --gray: #939596;
+    --light-gray: #d6d6d4;
+    --second:  #303031; /* grafito */
+    --third: #e8f6ea;
+    --fourth: #088178; /* green */
+    --fifth: #cce7d0;
+    /* --gray: #ADADAE; */
+    --shadow-1: rgba(0, 0, 0, 0.33);
+    --shadow-2: rgba(0, 0, 0, 1.93);
+
+    font-size: 2vw;
+
+}
+ body {
+    color: var(--second);
+    background-color: var(--cream);
+    position:relative;
+    font-family: fonta;
+ }
+
+* {/* Asterix select all elements*/
+    box-sizing: border-box; /*If you set box-sizing: border-box; on an element, padding and border are included in the width and height:*/
+
+    max-width: 1920px;
+    margin: auto; /*You can set the margin property to auto to horizontally center the element within its container.*/
+    padding: 0px;
+    /*;*/
+    /*background-color:  var(--main);*/
+
+    font-family:'Baskerville Old Face', 'Clarendon Lt BT', 'Gabriola';
+    font-weight: normal;
+}
+Link {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+h1, h2 {
+    font-family:  'Virsace Bigiora';
+}
+/*---------------------------------nav bar-----------------------------------------------*/
+
+
+.nav-bar {
+    display: grid;
+    grid-template-columns: 30vw 70vw;
+
+    position: fixed;
+    z-index: 998;  /* specifies the stack order of an element. greater stack order is always in front of an element with a lower stack order. */
+
+    background-color: var(--cream);
+    padding: 0px 0px;  /*TOP & BOTTOM, RIGH &LEFT */
+    /* border: solid blue; */
+    box-shadow: 0 2px 10px 0px var(--shadow-1); /*X Y Blur Radious Color*/
+}
+
+.mobile-bar, #close {
+    display: none;
+}
+
+#logo {
+    width: 7vw;
+
+    cursor: pointer;
+    transform: rotate(-7deg);
+}
+
+.nav-links{
+    /* position: relative; */
+    width: 70vw;
+  
+
+    /* padding: 0 20px; */
+
+    font-size: 1.5vw;
+    font-weight: 600;
+
+    transition: .3s ease;
+}
+
+
+.nav-links a {
+    /* border: 1px solid red; */
+    position: relative;
+
+    padding: 0vw 2vw;
+
+    color: var(--second);
+    text-decoration: none;
+
+
+}
+
+.nav-links a:hover,
+ a.activo { /*This is NOT the active selector, only one dot between "a" and "activo" select elements with both atributes.  The :active selector is used to select and style the active link.*/
+    color: var(--fourth);
+    transition: 30ms ease;
+}
+
+.nav-links a.activo::after,
+.nav-links a:hover::after{ /*inserts something after the content of each selected element(s) */
+    position: absolute;
+
+    left: 2.1vw;
+    width: 2vw;
+    height: .2vw;
+
+    content: "";  /*content property to specify the content to insert.*/
+    background-color: var(--fourth);
+    bottom: -.4vw;
+}
+/*-----------------------------top section--------------------------------------------*/
+
+#hero{
+  display: flex;
+  flex-direction: column; /* by default is row*/
+  justify-content: flex-start; /* to align items in the main axis*/
+  align-items: flex-start; /* to align items in the not-main axis*/
+
+  height: 58vw;/* height of the div*/
+  width: 100vw; /* width of the div*/
+
+  background-image: url("/public/images/yoga-1.png");
+  background-position: 60% -10%; /* horizontal & vertical Important no comma*/
+  background-size: 75%;  /* width & height of image*/
+  background-repeat: no-repeat; /*it repeats by defect*/
+
+
+  /* border: solid green; */
+
+  font-size: 1.3em;
+  padding: 5% 12%; /*only has effect on the text */
+
+}
+
+#hero h1, h2, h4, p, a{ /* cancel margin auto  inherated from styles line 23 */
+  margin: .3vw 0px;
+}
+#hero h1 {
+  color: var(--fourth);
+}
+
+
+#hero a {
+  
+  background-image: url("/public/images/brush-stroke4.png");
+  background-repeat: no-repeat;
+  background-size: 15vw;
+  background-color: transparent;
+  border: none;
+  padding: 1vw 2vw;
+
+  font-weight: 900;
+  font-size: 1em;
+  color: var(--third);
+
+  cursor: pointer;
+}
+
+
+/*-----------------------------small cards featured section--------------------------------------------*/
+
+#feature {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    padding: 2vw;
+
+    min-height: 18vw;
+}
+
+.ft-box {
+    position: relative;
+    height: 13.5vw;
+    width: 12vw;
+
+    padding: 1.5vw;
+    align-items: right;
+    box-shadow: 2px 2px 20px 0px var(--shadow-1); /*X Y Blur Radious(before the blur starts) Color*/
+
+    transition: transform 50ms, box-shadow 50ms;
+}
+
+.ft-box:hover {
+    transform: scale(1.02);
+    box-shadow: 2px 2px 40px 0px var(--shadow-1);
+}
+
+.ft-box img {
+    position: relative;
+    width: 100%;
+    /* margin: 1.5vw 2.5vw; */
+     border-radius: 10px;
+}
+
+.ft-box h6 {
+    background-color: var(--second);
+    color: var(--fourth);
+
+
+    text-align:center;
+    width: 9vw;
+    border-radius: 4px;
+}
+
+.ft-box:nth-child(odd) h6{ /*It targets only the odds h6 that are inside of a div with ft-box class */
+    background-color: yellow;
+}
+
+.ft-box:nth-child h6(even){
+    background-color: var(--fourth);
+}
+
+/*-----------------------------Products--------------------------------------------*/
+
+
+
+    #products {
+    padding: 2vw 2vw 0vw 2vw;
+    text-align: center;
+    margin-bottom: 0vw;
+    }
+    
+    .pdcts-title-select {
+        display: flex;
+        flex-wrap: wrap;
+        /* border: solid red; */
+        margin: 0rem 16rem 0rem 16rem ;
+
+    }
+
+    .pdct-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        /* margin: 0vw; */
+    }
+    
+    .Link_style {
+        text-decoration: none;
+    }
+
+    .pdct-box {
+        position: relative;
+        width: 21vw;
+    
+    
+        /* margin-top: 2.5vw; */
+        margin: 2vw 1vw;
+        padding:  .3vw;
+        border-radius: 2vw;
+    
+        cursor: pointer;
+        box-shadow: 2px 2px 20px 0px var(--shadow-1);
+        transition: 200ms ease;
+    }
+    .pdct-box:hover {
+        transform: scale(1.014);
+        box-shadow: 1px 1px 30px 0px var(--shadow-1)
+    }
+    
+    .pdct-box img {
+        width: 100%;
+        border-radius: 2vw;
+    }
+      
+    
+    .pdct-box .des{
+        text-align: left;
+        padding: 0.5vw;
+    }
+    
+    .pdct-box .des span {
+        color: var(--gray);
+        font-size: .8em;
+    }
+    
+    .pdct-box .des h5{
+        padding-top: 7px;
+        font-size: 1em;
+    }
+    
+    .pdct-box .des i{
+        font-size: .8em;
+        color: orange;
+    }
+    
+    .pdct-box .des h4{
+    color: var(--fourth);
+    /* font-weight: 11200; */
+    }
+    
+    .add-to-cart {
+        position: absolute;
+        right: 1.2vw;
+        bottom: 1vw;
+    
+        width: 3vw;
+        height: 3vw;
+
+        padding: .3rem;
+        font-size: 10rem;
+    
+        line-height: 4vw;
+        border-radius: 5vw;
+        border: solid 1px var(--fifth);
+    
+        color: var(--fourth);    
+    }
+
+        .cart_unclicked {
+
+        background-color: var(--third);
+
+    }
+
+        .cart_clicked {
+
+        background-color: var(--fourth);
+        color:  var(--third);
+
+    }
+
+    /*-----------------------------Call to action--------------------------------------------*/
+
+#call{
+    height: 22vw;
+    padding: 2.5vw;
+    /*   */
+    /* border: solid; */
+    background: url("/public/images/happy.2.jpg");
+    background-size: 100%;
+
+    text-align: center;
+}
+
+#call-text-box {
+    width: 50%;
+    height: 50%;
+    background-color: var(--second);
+    margin-top: 5%;
+    padding: 2%;
+    border-radius: 15px;
+
+    color: var(--cream);
+}
+
+#call-text-box span{
+   color: red;
+}
+
+#call-text-box button{
+    width: 30%;
+    height: 33%;
+    background-color: var(--cream);
+    border: none;
+
+    border-radius: 10px;
+    transition: 30ms;
+    cursor: pointer;
+
+    font-size: 50%;
+    font-weight: 999;
+ }
+
+ #call-text-box button:hover{
+    background-color: orange;
+ }
+
+
+ /*-----------------------------Banners--------------------------------------------*/
+
+.banners {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    padding: 2vw;
+    background-repeat: no-repeat;
+    /* border: solid red; */
+}
+
+.banner-lbox {
+    min-width: 47vw;
+    height: 23vw;
+    background: url("/public/images/places/Valencia-7.1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 3%;
+    margin-top: 2vw;
+
+    color: var(--second);
+    font-size: 1.2em;
+}
+
+
+.banner-lbox button {
+    width: 12vw;
+    height: 4vw;
+    background-color: transparent;
+    border: 1px solid var(--second);
+
+    cursor: pointer;
+    transition: 30ms;
+
+    font-size: .8em;
+    font-weight: 900;
+    color: var(--second);
+}
+
+.banner-lbox:hover button { /* Change button colour when cursor is on the card*/
+    background-color: orange;
+    color: var(--second);
+
+}
+
+
+#box-2 {
+    background: url("/public/images/places/Valencia-10.1.jpg");
+    background-size: 100%;
+}
+
+.banner-sbox {
+    min-width: 26vw;
+    height: 14vw;
+    background: url("/public/images/places/Valencia-8.1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 5% 1%; /* vertical and horizontal alignment*/
+    margin-top: 2vw;
+
+    color: var(--cream);
+    font-size: .9em;
+}
+
+
+.banner-sbox h4 {
+color: orange;
+}
+
+
+#box-4 {
+    min-width: 38vw;
+    height: 14vw;
+    background: url("/public/images/places/Valencia-9.1.jpg");
+    background-size: 100%;
+}
+
+#box-5 {
+    background: url("/public/images/places/Valencia-4.1.jpg");
+    background-size: 110%;
+}
+
+/*----------------------------------Newsletter---------------------------------------*/
+
+
+.newsletter {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-top: 3vw;
+    background-color: var(--second);
+    padding: 3% 1%;
+
+    color: var(--cream);
+
+
+}
+
+.newsletter h6 {
+    color: gray;
+}
+
+.newsletter span {
+    color: orange;
+}
+
+.newsletter form {
+  font-size: 2em;
+}
+
+#news-input {
+    position: relative;
+    left: 1vw;
+
+    width: 27vw;
+    height: 4vw;
+
+    font-size: 1.5vw;
+    padding-left: 1vw;
+
+    border: none;
+    border-radius: .5vw .0vw .0vw .5vw;
+
+    color: gray;
+}
+
+#news-submit {
+    width: 9vw;
+    height: 4vw;
+    padding-left: 1vw;
+    background-color: var(--fourth);
+
+    border: none;
+    border-radius: .0vw .5vw .5vw .0vw  ;
+
+    font-size: 1.5vw;
+    color: var(--cream);
+}
+/*----------------------------------Footer---------------------------------------*/
+
+.footer2{
+    margin: 3vw;
+    display: grid;
+    height: 20vw;
+    grid-template-columns: 30% 20% 20% 30%;
+    grid-template-rows: 65% 30% 5%;
+    grid-template-areas:
+        "contact about account install"
+        "follow follow follow visa"
+        "copyright copyright copyright copyright";
+    text-align: left;
+    }
+
+    .footer2 > div {
+        margin-bottom: 1vw;
+        /* border: solid; */
+        width: 100%;
+        height:100%;
+
+    }
+
+    .footer2  h5 {
+        margin-bottom: 1vw;
+        font-weight: bold;
+    }
+
+    .footer2 h6 {
+        color: var(--gray);
+    }
+
+    .footer2 span {
+        font-weight: bold;
+        color: var(--second);
+    }
+
+#contact {
+    grid-area: contact;
+}
+
+
+
+
+#account {
+    grid-area: account;
+
+}
+
+#install {
+    grid-area: install;
+}
+#install img {
+    width: 25vw;
+    margin: 2vw;
+}
+
+#install a {
+    width: 20vw;
+    height: 20vw;
+
+    color: black;
+}
+
+#follow {
+    grid-area: follow;
+}
+
+#follow h5{
+    margin-bottom: 1vw;
+}
+#follow i {
+    cursor: pointer;
+}
+#payment {
+    grid-area: visa;
+
+}
+
+#payment img {
+    width: 15vw;
+    margin: 1vw 2.5vw;
+}
+
+#copy {
+    grid-area: copyright;
+    text-align: center;
+}
+
+.footer2 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer2 i:hover, .footer2 a:hover{
+    color: black;
+    transform: scale(1.1);
+    font-size: 1.1em;
+    transition: 300ms ease;
+}
+/*---------------------------------------------------------------------------------------*/
+/*----------------------------- Shop Page--------------------------------------------*/
+
+
+
+.shop-hero {
+
+    position: relative;
+    top: 3vw; /* This is added because the previous div was in postion fixed, so it is not part of the normal flow. I also have to add an equal margin-bottom*/
+    margin-bottom: 2vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    height: 20vw;
+    width: 100vw;
+    background-size: cover;
+    background-image: url("/public/images/places/Valencia-3.2.jpg");
+
+    /* padding: 6vw; */
+}
+
+.shop-hero > h2, .shop-hero p {
+    color: var(--cream);
+    font-weight: bold;
+
+}
+#pagination {
+    text-align: center;
+}
+
+#pagination > a{
+background-color: var(--fourth);
+border-radius: .3vw;
+padding: 1vw 1.5vw;
+
+color: var(--cream);
+font-size: .9em;
+font-weight: bold;
+cursor: pointer;
+
+
+text-decoration: none;
+}
+/*---------------------------------------------------------------------------------------*/
+/*----------------------------- Single Product Page--------------------------------------------*/
+
+.listing {
+    display: flex;
+    padding: 7vw 4vw 0vw 4vw;
+    /* border: solid blue; */
+    font-size: .7em;
+}
+
+#listing-img {
+    display: flex;
+    flex-wrap: wrap;
+    /* border: solid red; */
+    gap: 1vw 1vw ;
+}
+
+#listing-img img:nth-child(1) {
+    width: 32vw;
+    height: 32vw;
+    order: -1;
+}
+
+.listing img {
+    width: 10vw;
+    /* height: 10vw; */
+    margin: 0vw;
+    cursor: pointer;
+}
+
+#listing-desc {
+    padding: 3vw;
+}
+
+#listing-desc h2 {
+    margin: 1vw 0vw 1vw 0vw;
+}
+
+#select {
+    width: 20vw;
+    height: 2.5vw;
+    font-size: .9em;
+    margin-bottom: .9vw;
+}
+
+#select option {
+    font-size: .3em;
+}
+
+#select_2 {
+    width: auto;
+    height: 3.5vw;
+    font-size: 1.4em;
+    padding: 1vw auto 1vw auto;
+    background-color: black;
+    color: white;
+}
+
+#select_2 option {
+    margin: auto;
+    font-size: .4em;
+}
+
+#quantity, #add {
+    width: 4vw;
+    height: 4vw;
+    font-size: .9em;
+    border-radius: .3vw;
+    border: none;
+    margin-bottom: .9vw;
+}
+
+#add {
+    width: 12vw;
+    background-color: var(--fourth);
+    color: var(--cream);
+    cursor: pointer;
+}
+
+#listing-desc h3 {
+    margin: 2vw 0vw 1vw 0vw;
+}
+
+.listing p {
+    font-size: .7em;
+}
+/*---------------------------------------------------------------------------------------*/
+/* ----------------------------- About Page-------------------------------------------- */
+
+/*-----------Hero------------*/
+
+.shop-hero#about-hero  {  /*.class1.class2 	Selects all elements with both name1 and name2 set within its class attribute */
+    background-position: 00vw 24vw; /* The first value is the horizontal position and the second value is the vertical.*/
+    height: 20vw;
+    width: 100vw;
+    top: 0vw;
+    margin: 0vw;
+
+
+    background-image: url("/public/images/products/sujetalibros/HD-1.jpg");
+    background-size: cover;
+    font-size: 1.4em;
+
+}
+
+/*---------Top----------*/
+
+.about-top {
+    display: flex;
+    justify-content: space-between;
+    margin: 0vw;
+    padding: 5vw 2vw 0vw 2vw;
+
+    font-size: .8em;
+}
+
+.about-top img {
+    width: 35vw;
+}
+
+.about-top div:nth-child(2) {
+    /* margin-top: 5vw; */
+    width: 45vw;
+}
+
+
+/*---------Video----------*/
+
+#about-video {
+    display: flex;
+    flex-direction: column;
+    padding: 6vw 2vw 2vw 2vw;
+}
+
+#about-video h1, #about-video a {
+    font-weight: bold;
+}
+
+#about-video video {
+    margin-top: 2vw;
+    border-radius: 4vw;
+}
+
+/*---------------------------------------------------------------------------------------*/
+/* ----------------------------- Contact Page-------------------------------------------- */
+
+/*-----------Hero------------*/
+
+.shop-hero#contact-hero  {  /*.class1.class2 	Selects all elements with both name1 and name2 set within its class attribute */
+    background-position: 00vw 24vw; /* The first value is the horizontal position and the second value is the vertical.*/
+    height: 20vw;
+    width: 100vw;
+
+    top: 0vw;
+    margin: 0vw;
+    padding-top: 9vw ;
+
+    background-image: url("/public/images/places/Valencia-11.1.jpg");
+    background-size: cover;
+
+    font-size: 1em;
+    color: var(--second);
+}
+
+#contact-hero > h1, #contact-hero p {
+	color: var(--second);
+	font-weight: bold;
+}
+
+/*---------Main----------*/
+
+.contact-main {
+    display: flex;
+    margin: 0vw;
+    padding: 4vw 4vw 0vw 3vw;
+
+    font-size: .9em;
+}
+
+.details {
+    width: 39vw;
+}
+
+
+.details * {
+    margin: 1.2vw;
+
+    color: var(--gray);
+}
+
+.details li {
+    list-style: none;
+    margin-left: -.5vw;
+}
+
+.details h2, .details h5:nth-child(3), .details i {
+    color: var(--second);
+    font-weight: bold;
+}
+
+
+.map iframe {
+    width: 48vw;
+    height: 35vw;
+    border-radius: 1vw;
+}
+
+/*---------Contact forms----------*/
+
+.contact-form {
+    display: flex;
+    padding: 4vw 4vw 0vw 4vw;
+    border: solid var(--light-gray);
+    margin: 3vw;
+}
+.forms {
+    height: 48vw;
+    margin: 1vw;
+}
+
+.forms h5 {
+    color:var(--gray);
+}
+
+.forms h2 {
+    margin-top: 1vw;
+    font-weight: bold;
+}
+
+.forms input, .forms textarea {
+    display: flex;
+    flex-direction: column;
+
+    width: 52vw;
+    height: 3vw;
+    margin: 2vw 0vw 0vw 0vw;
+
+    background-color: var(--cream);
+    border: solid var(--light-gray);
+
+    font-size: .8em;
+}
+
+.forms textarea {
+    height: 18vw;
+}
+
+#contact-submit {
+    margin-left: 0vw;
+    height: 3vw;
+    width: 8vw;
+    background-color: var(--fourth);
+
+    border: none;
+    border-radius: .3vw ;
+    font-size: .8em;
+    color: var(--cream);
+
+}
+
+
+.staff {
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 30vw;
+    height: 40vw;
+
+    font-size: .9em;
+    color: var(--gray);
+}
+
+.staff h3 {
+    color: var(--second);
+    font-weight: bold;
+}
+.staff img {
+    height: 6vw;
+    margin-left: 3vw;
+    border-radius: 3vw;
+}
+
+/*---------------------------------------------------------------------------------------*/
+/* ----------------------------- Cart Page-------------------------------------------- */
+
+/*-----------Hero------------*/
+
+.shop-hero#cart-hero {
+    background-image: url("/public/images/places/Valencia-6.1.jpg");
+    padding: 0vw;
+
+}
+
+#cart-hero h1, #cart-hero p {
+	color: var(--second);
+	font-weight: bold;
+    margin: .5vw;
+
+}
+
+/*---------Table----------*/
+
+#cart {
+    margin: 6vw 3vw 3vw 3vw;
+    /* border: solid red; */
+    font-size: .8em;
+    text-align: center;
+}
+
+.cart-table {
+    /* border: solid blue; */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.cart-table thead{
+
+    width: 80vw;
+    border-top: solid var(--light-gray);
+    border-bottom: solid var(--light-gray);
+}
+
+.cart-table td {
+    padding: 1vw;
+}
+
+.cart-table a{
+    color: red;
+}
+
+.cart-table img{
+    width: 10vw;
+
+}
+
+.cart-table input{
+    width: 5vw;
+    height: 3vw;
+    background-color: var(--second);
+    color: var(--cream);
+    font-size: 1em;
+    text-align: center;
+}
+
+/*---------Coupon and Cart Total----------*/
+
+.coupon {
+    display: flex;
+    margin: 6vw 3vw 6vw 3vw;
+    font-size: .8em;
+    text-align: left;
+}
+
+.coupon-apply{
+    margin: 0vw;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 45vw;
+    height: 20vw;
+    border: solid var(--light-gray) 3px;
+
+}
+.total-table {
+    border-collapse: collapse;
+}
+
+.total td, .total th {
+    width: 20vw;
+    border: solid var(--light-gray) 3px;
+    padding-left: 1vw;
+
+}
+
+.total * {
+    margin-left: 2vw;
+}
+
+
+.coupon h3, .coupon th{
+    font-weight: bold;
+}
+
+
+.coupon-apply input, .coupon-apply button, .total button {
+    height: 3vw;
+    padding-left: 1vw;
+    border: solid var(--light-gray);
+    border-radius: .4vw;
+
+    font-size: .9em;
+    color: var(--gray);
+}
+
+.coupon button {
+    background-color: var(--fourth);
+    color: var(--cream);
+    border: none;
+}
+
+.coupon-apply button {
+    width: 7vw;
+}
+
+.coupon-apply input {
+    width: 30vw;
+    background-color: var(--cream);
+}
+
+.total button {
+    width: 15vw;
+    margin: auto auto auto 2vw;
+}
+
