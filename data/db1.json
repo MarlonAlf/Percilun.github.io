@@ -1,0 +1,27 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Hucha Conejo",
+      "price": 16.99,
+      "bullet_1": "🐘 EDUCACIÓN FINANCIERA PARA LOS MÁS PEQUEÑOS: Enseñale la importancia de posponer la gratificación, de guardar para mañana, de sembrar para recoger en el futuro.",
+      "bullet_2": "🐇 REGALA UNA HUCHA DIFERENTE: Cuerpo fabricado en cerámica como las huchas tradicionales, colita en peluche y lacito en tela real, sorprenderá gratamente a quien lo tenga en sus manos. ",
+      "bullet_3": "🐎 UN COMPAÑERO POR MUCHOS AÑOS: Posee una tapa plástica en la parte inferior para no tener que romper la figura al extraer su contenido. ",
+      "bullet_4": "🐓 CALIDAD - PRECIO: Se entrega en empaque genérico con el objetivo de reducir al máximo el precio final.",
+      "bullet_5": "✅ SATISFACCIÓN GARANTIZADA: Sus comentarios nos ayudan a mejorar en Percilun. Si por algún motivo no está satisfecho con nuestro producto, contáctenos y lo resolveremos lo antes posible.",
+      "img_1": "images/products/conejo/conejo-1.jpg",
+      "img_2": "images/products/conejo/conejo-2.jpg",
+      "img_3": "images/products/conejo/conejo-3.jpg",
+      "img_4": "images/products/conejo/conejo-4.jpg",
+      "Category": "Educational",
+      "New": "true",
+      "select_group": "huchas",
+      "select_alias": "Conejo",
+      "in_cart": "false"
+    },
+    {
+      "id": "ad2d",
+      "in_cart": true
+    }
+  ]
+}
