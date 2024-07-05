@@ -17,7 +17,7 @@
       "New": "true",
       "select_group": "huchas",
       "select_alias": "Elefante",
-      "in_cart": "false"
+      "in_cart": "true"
     },
     {
       "id": "2",
@@ -36,7 +36,7 @@
       "New": "true",
       "select_group": "huchas",
       "select_alias": "Tigre",
-      "in_cart": "false"
+      "in_cart": "true"
     },
     {
       "id": "3",
@@ -55,7 +55,7 @@
       "New": "true",
       "select_group": "huchas",
       "select_alias": "Leon",
-      "in_cart": "false"
+      "in_cart": "true"
     },
     {
       "id": "4",
