@@ -1,7 +1,7 @@
 import New_arrivals from "../Home_page/New_arrivals";
 import Hero_2 from "./Hero_2";
 import useFetch from "../Common_logic/useFetch";
-import Card from "../Shop_page/Card";
+import Card from "./Card";
 import { useState } from "react";
 
 
