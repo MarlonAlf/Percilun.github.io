@@ -29,7 +29,7 @@ const Pdct_img = (props) => {
         event.target.src = exitingImage;
     }
 
-    return ( 
+    return (  
         <div className="listing"> 
                 <div id="listing-img">
                     <img className="img-swap" src={mainImage} onClick={handleImageSwap} />
