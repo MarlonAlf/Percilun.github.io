@@ -27,7 +27,7 @@ const SPP = () => {
             // console.log('cardId', cardId);
             // console.log('Item', item.id);
 
-            var group = currentProduct[0].select_grou p;
+            var group = currentProduct[0].select_group;
      }
     
 

@@ -10,6 +10,7 @@ import Cart from './Cart_page/Cart';
 import MPP from './Product_pages/Multiproduct_page';
 import SPP from './Product_pages/Single_product_page';
 import TestPage from './Product_pages/TestProductPage';
+import Admin from './Admin/Admin';
 
 
 
@@ -28,11 +29,13 @@ function App() {
               <Route path='/Cart' element={< Cart />}></Route>   
               <Route path='/MPP' element={< MPP />}></Route>
               <Route path='/SPP/:cardId' element={< SPP />}></Route>  
-              <Route path='/TestPage' element={< TestPage />}></Route>        
+              <Route path='/TestPage' element={< TestPage />}></Route>
+              <Route path='/Admin' element={< Admin />}></Route>        
       
           </Routes>
         <Newsletter />
         <Footer />
+    
  
       </div>
     </div>

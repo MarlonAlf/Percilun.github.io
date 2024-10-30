@@ -11,7 +11,7 @@ const MPP = () => {
 
     // GETTING THE DATA FROM A JSON DATABASE
     
-     // Fetching peoducts from json db using useFetch form Common_logic folder
+     // Fetching products from json db using useFetch form Common_logic folder
 
      const { data: products, isPending: productsPending, error: productsError} = useFetch('http://localhost:8000/products');
      

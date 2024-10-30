@@ -55,7 +55,7 @@ h1, h2 {
     z-index: 998;  /* specifies the stack order of an element. greater stack order is always in front of an element with a lower stack order. */
 
     background-color: var(--cream);
-    padding: 0px 0px;  /*TOP & BOTTOM, RIGH &LEFT */
+    padding: 0px 0px;  /*TOP & BOTTOM, RIGH & LEFT */
     /* border: solid blue; */
     box-shadow: 0 2px 10px 0px var(--shadow-1); /*X Y Blur Radious Color*/
 }
@@ -1078,3 +1078,68 @@ text-decoration: none;
     margin: auto auto auto 2vw;
 }
 
+/*---------------------------------------------------------------------------------------*/
+/* ----------------------------- Admin-------------------------------------------- */
+
+.admin-container {
+
+    background-color: #c2ebf4;
+    padding-top:9vw ;
+    text-align:center;
+}
+
+.admin-container td {
+    padding: 1vw;
+    /* background-color: red; */
+    border: solid blue 1px;
+}
+
+.admin-container button{
+    padding: 1vw 2vw;
+    background-color: #303031;
+    margin: 1vw;
+    
+    color: white;
+    font-size: .8rem;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.4);
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 1000%;
+    height: 100%;
+    overflow: auto;
+    /* padding: auto; */
+
+
+}
+
+.modal-content {
+
+    left: 25%;
+    top: 80px;
+    width: 60%;
+    height: 50%;
+    padding: 5%;
+
+    background-color: #fefefe;
+    border: 10px solid;
+
+}
+
+
+.close {
+    float: right;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.admin-container input{
+    padding: 0.5vw 1vw;
+    margin: .5vw;
+    font-size: 1rem;
+}
