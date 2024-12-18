@@ -1,4 +1,4 @@
-
+import Modal from "./Modal";
 import { useState, useEffect} from "react";
 
 const Admin = () => {
@@ -14,18 +14,30 @@ const Admin = () => {
     }, [])
 
     const fetchProducts = async () => {
-        const response = await fetch("http://127.0.0.1:5000/Admin");
+        const response = await fetch("http://127.0.0.1:5000/get_products");
 
         const data = await response.json(); // jsonify handles converting Python data to JSON, response.json() handles converting the raw JSON string back into a JavaScript object on the frontend.
 
         setProducts(data.products)
-        console.log("777777777777777777777777",data)
     } 
 
+    const [ currentId, setCurrenttId] = useState("")
     const [ title, setTitle] = useState("");
     const [ price, setPrice] = useState("");
     const [ bullet1, setBullet1] = useState("");
-    const [ currentId, setCurrenttId] = useState("")
+    const [ bullet2, setBullet2] = useState("");
+    const [ bullet3, setBullet3] = useState("");
+    const [ bullet4, setBullet4] = useState("");
+    const [ bullet5, setBullet5] = useState("");
+    const [img1, setImg1] = useState("");
+    const [img2, setImg2] = useState("");
+    const [img3, setImg3] = useState("");
+    const [img4, setImg4] = useState("");
+    const [category, setCategory] = useState("");
+    const [isNew, setIsNew] = useState("");
+    const [group, setGroup] = useState("");
+    const [allias, setAllias] = useState("");
+    const [inCart, setInCart] = useState("");
 
     const closeModal = () => {
         setIsModalOpen(false)
@@ -37,6 +49,19 @@ const Admin = () => {
         setTitle("");
         setPrice("");
         setBullet1("");
+        setBullet2("");
+        setBullet3("");
+        setBullet4("");
+        setBullet5("");
+        setImg1("");
+        setImg2("");
+        setImg3("");
+        setImg4("");
+        setCategory("");
+        setIsNew("");
+        setGroup("");
+        setAllias("");
+        setInCart("");
     }
     
     const openUpdateModal = (product) => {
@@ -47,6 +72,19 @@ const Admin = () => {
         setTitle(product.title)
         setPrice(product.price)
         setBullet1(product.bullet1)
+        setBullet2(product.bullet2)
+        setBullet3(product.bullet3)
+        setBullet4(product.bullet4)
+        setBullet5(product.bullet5)
+        setImg1(product.img1)
+        setImg2(product.img2)
+        setImg3(product.img3)
+        setImg4(product.img4)
+        setCategory(product.category)
+        setIsNew(product.isNew)
+        setGroup(product.group)
+        setAllias(product.allias)
+        setInCart(product.inCart)
     }
 
     const onSubmit = async (e) => {
@@ -54,7 +92,7 @@ const Admin = () => {
         
         e.preventDefault() // Prevents page refreshing which is the default
 
-        const data = { title, price, bullet1}// This is called object shorthand, where if the key and the variable name are the same, you can omit the repetition. So, it’s the same as  title: title, price: price, bullet1: bullet1, but more concise. This object will be sent to the server as JSON
+        const data = { title, price, bullet1, bullet2, bullet3, bullet4, bullet5, img1, img2, img3, img4, category, isNew, group, allias, inCart}// This is called object shorthand, where if the key and the variable name are the same, you can omit the repetition. So, it’s the same as  title: title, price: price, bullet1: bullet1, but more concise. This object will be sent to the server as JSON
 
         // -----------------------------  CREATE PRODUCT -------------------------------------
         if(modalForCreating){      
@@ -67,9 +105,6 @@ const Admin = () => {
             console.log('data----------',data);
             alert(message.message);
         }else{
-            
-            console.log('data----888888888------',data);
-            // console.log('ID----------', product.id);
             closeModal();
             fetchProducts();
         }           
@@ -83,7 +118,7 @@ const Admin = () => {
     
         if (response.status !== 201 && response.status !== 200) {
             // const data = await response.json()
-            // console.log(data);
+            console.log(data);
             // alert(data.message);
         }else{
             closeModal();
@@ -117,7 +152,17 @@ const Admin = () => {
                 <thead>
                     <th>Title</th>
                     <th>Price</th>
-                    <th>Bullet Point</th>
+                    {/* <th>Bullet 1</th>
+                    <th>Bullet 2</th>
+                    <th>Bullet 3</th>
+                    <th>Bullet 4</th>
+                    <th>Bullet 5</th> */}
+                    <th>Image 1</th>
+                    {/* <th>Category</th>
+                    <th>New</th>
+                    <th>Group</th>
+                    <th>Allias</th>
+                    <th>In Cart</th> */}
                     <th>Actions</th>
                 </thead>
                 <tbody>
@@ -125,7 +170,17 @@ const Admin = () => {
                     <tr key={product.id}>
                         <td>{product.title}</td>
                         <td>{product.price}</td>
-                        <td>{product.bullet1}</td>
+                        {/* <td>{product.bullet1}</td>
+                        <td>{product.bullet2}</td>
+                        <td>{product.bullet3}</td>
+                        <td>{product.bullet4}</td> 
+                        <td>{product.bullet5}</td>*/}
+                        <td>{product.img1}</td>
+                        {/* <td>{product.category}</td>
+                        <td>{product.isNew}</td>
+                        <td>{product.group}</td>
+                        <td>{product.allias}</td>
+                        <td>{product.inCart}</td> */}
                         <td>
                             <button onClick={() => openUpdateModal(product)}>Update</button>
                             <button onClick={() => deleteProduct(product.id)}>Delete</button>                        
@@ -137,36 +192,8 @@ const Admin = () => {
         {/* MODAL */}
         <button onClick={openCreateModal}>Open Create New Product</button>
         { isModalOpen && <div className="modal">
-            <div className="modal-content">
-                <span className="close" onClick={closeModal}>&times;</span>
-                <form onSubmit={onSubmit}>
-                    <div>
-                        
-                    </div>
-                    <div>
-                        <label htmlFor="title">Title</label> {/* html way to when the label is clicked the cursor appers into the box */}               
-                        <input type="text" 
-                        id="title" 
-                        value={title} 
-                        onChange={(e) => setTitle(e.target.value)}></input>
-                    </div>
-                    <div>
-                        <label htmlFor="price">Price</label>
-                        <input type="text" 
-                        id="price" 
-                        value={price} 
-                        onChange={(e) => setPrice(e.target.value)}></input>
-                    </div>
-                    <div>
-                        <label htmlFor="bullet1">Bullet1</label>
-                        <input type="text" 
-                        id="bullet1" 
-                        value={bullet1} 
-                        onChange={(e) => setBullet1(e.target.value)}></input>
-                    </div>
-                    <button type="submit">{modalForCreating && "Create Product" || !modalForCreating && "Update Product"  }</button>
-                </form>
-            </div>
+            {<Modal onSubmit={onSubmit} setIsModalOpen={setIsModalOpen} title={title}  price={price} bullet1={bullet1} bullet2={bullet2} bullet3={bullet3} bullet4={bullet4} bullet5={bullet5} img1={img1} img2={img2} img3={img3} img4={img4} category={category} isNew={isNew} group={group} allias={allias} inCart={inCart} setTitle={setTitle} setPrice={setPrice} setBullet1={setBullet1} setBullet2={setBullet2} setBullet3={setBullet3} setBullet4={setBullet4} setBullet5={setBullet5} setImg1={setImg1} setImg2={setImg2} setImg3={setImg3} setImg4={setImg4} setCategory={setCategory} setIsNew={setIsNew} setGroup={setGroup} setAllias={setAllias} setInCart={setInCart} modalForCreating={modalForCreating}/>}
+          
         </div>
         }
         </div>                

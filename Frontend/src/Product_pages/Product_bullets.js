@@ -1,24 +1,30 @@
 const Pdct_bullets = (props) => {
-        const bullet = props.product[0];
+        const bullet = props.product && props.product[0];
+        console.log('prop--------', props)
+        console.log('bullet--------', bullet)
         
+        if (!bullet) {
+            return <div>Loading product details...</div>;
+        }
+
         return ( 
         <div>
                 <div>
                     <h3>Product Details</h3>
                         <p>
-                            { bullet.bullet_1 }
+                            { bullet.bullet1 }
                             <br/>
                             <br/>
-                            { bullet.bullet_2 }    
+                            { bullet.bullet2 }    
                             <br/>
                             <br/>
-                            { bullet.bullet_3 }
+                            { bullet.bullet3 }
                             <br/>
                             <br/>
-                            { bullet.bullet_4 }
+                            { bullet.bullet4 }
                             <br/>
                             <br/>
-                            { bullet.bullet_5 }
+                            { bullet.bullet5 }
                         </p>
 
                 </div>

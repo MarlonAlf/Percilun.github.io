@@ -1,8 +1,8 @@
 const Footer = () => {
 
-    const payment_img = `${process.env.PUBLIC_URL}/images/payment-methods.png`;
-    const googleplay_img = `${process.env.PUBLIC_URL}/images/google-play.png`;
-    const logo_img = `${process.env.PUBLIC_URL}/images/logo_black.png`;
+    const payment_img = `${process.env.PUBLIC_URL}/images/background/payment-methods.png`;
+    const googleplay_img = `${process.env.PUBLIC_URL}/images/background/google-play.png`;
+    const logo_img = `${process.env.PUBLIC_URL}/images/background/logo_black.png`;
     // These have to be in two steps, because it first have to load this part and then the one inside return()
 
     return ( 
@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
         <div id="follow">
             <h5>Follow Us</h5>
-            <i className=" fab fa-facebook-f"></i>
+            <i className="fab fa-facebook-f"></i>
             <i className="fa-brands fa-twitter"></i>
             <i className="fa-brands fa-instagram"></i>
             <i className="fa-brands fa-pinterest-p"></i>

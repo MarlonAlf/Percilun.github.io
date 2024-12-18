@@ -16,9 +16,8 @@ const Card = ({products}) => {
         <div className="pdct-container">
             
             {products.map((product) =>
-                { const imagePath = `${process.env.PUBLIC_URL}/${product.img_1}`;
+                { const imagePath = `${process.env.PUBLIC_URL}${product.img1}`;
                     const productId = product.id;
-                    console.log('????????????????', productId)
                     return(                                    
                         <Link to={`/SPP/${product.id}`} className='Link_style' > 
                             <div key={product.id} className="pdct-box">
@@ -29,7 +28,7 @@ const Card = ({products}) => {
                                     <div>
                                         <i><FontAwesomeIcon icon="fa-solid fa-star" /> </i>
                                         <i><FontAwesomeIcon icon="fa-solid fa-star" /> </i>
-                                        <i><FontAwesomeIcon icon="fa-solid fa-star" /> </i>
+                                          <i><FontAwesomeIcon icon="fa-solid fa-star" /> </i>
                                         <i><FontAwesomeIcon icon="fa-solid fa-star" /> </i>
                                         <i><FontAwesomeIcon icon="fa-solid fa-star" /> </i>
                                     </div>
@@ -40,7 +39,7 @@ const Card = ({products}) => {
                         </Link>
                     );
                 }
-            )};
+            )}
             
         </div>
      )

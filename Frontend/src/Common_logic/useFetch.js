@@ -7,8 +7,8 @@ const useFetch = (url) => {
     const [error, setError] = useState(null);
         // console.log('usefetch url', url)
 
-        useEffect(() => { 
-            setTimeout(() =>{
+        useEffect(() => {   
+            setTimeout(() => {
                 fetch(url) 
                     .then(res => {
                         if(!res.ok){

@@ -16,18 +16,41 @@ const SPP = () => {
     
      // Fetching products from json db using useFetch form Common_logic folder
 
-     const { data: products, isPending: productsPending, error: productsError} = useFetch('http://localhost:8000/products');
+  
 
-     let currentProduct = null;
-     if (products !== null) {
-            // console.log('products ', products);
+     // ------------------------Nueva addicion-------------------------
+    const [products, setProducts ] = useState([]);
+    const [isLoading, setIsLoading] = useState(true); // Loading state
+
+
+        useEffect(() => { 
+        fetchProducts()      
+        }, [])
+
+    const fetchProducts = async () => {
+        setIsLoading(true);// 14 nov 2024 I need to learn error handling this was chatgpt answer
+        try {
+            const response = await fetch("http://127.0.0.1:5000/get_products");
+            const data = await response.json(); // jsonify handles converting Python data to JSON, response.json() handles converting the raw JSON string back into a JavaScript object on the frontend.
+            
+            setProducts(data.products)
+        }catch (error) {
+            console.error("Error fetching products:", error);
+        }finally{
+            setIsLoading(false)
+        }
+    };
+  // ------------------------------------------------------------
+     // products?
+    const currentProduct = products?.filter((item) => item.id === parseInt(cardId)) || [];
+    const group = currentProduct.length > 0 ? currentProduct[0].group : null;
+
+     if (products !== null && products.leng > 0) {
             currentProduct = products.filter((item) => item.id == parseInt(cardId));
-        
-            // console.log('current Product', currentProduct);
-            // console.log('cardId', cardId);
-            // console.log('Item', item.id);
-
-            var group = currentProduct[0].select_group;
+                     
+            if(currentProduct.length > 0){
+                group = currentProduct[0].group;
+            }
      }
     
 
@@ -53,11 +76,9 @@ const SPP = () => {
     <div>
         <div className="listing">
 
-            {productsError && <div>{ productsError }</div>}
-            {productsPending && <div>Loading....</div>}
 
             {/* Display fetched images */}
-            {products && <Pdct_img product = { products.filter((item) => item.id == parseInt(selectedAnimal))}/>}            
+            {products && <Pdct_img product = {products.filter((item) => item.id === parseInt(selectedAnimal))}/>}            
 
             <div id="listing-desc"> 
                 <span>Percilun</span>
@@ -67,7 +88,8 @@ const SPP = () => {
                     {products && <Pdct_desc product = {products.filter((item) => item.id == parseInt(selectedAnimal))} /> } 
                     {/* filter returns one array, but then when I passed to the child component as a prop, it encapsulates the array inside an object, in order to access it I will need props.arrayname */}   
 
-                    {products !== null && <Select_pdct onSelect={handleSelectAnimal} selected_group = {products.filter((item) => item.select_group == group)} currentProduct = {currentProduct}/> }{/*Pass handleSelectAnimal function as prop */}
+                    {!isLoading && products &&  <Select_pdct onSelect={handleSelectAnimal} selected_group = {products.filter((item) => item.group == group)} currentProduct = {currentProduct}/> }
+                    {/*It passes the handleSelectAnimal function as prop.  In order for the select form to show on the screen, not only products has to be truthful, but inside the Select_product component, products has to be > 1. The var group will filter what item will be display in the select form */}
             
                 </div>                  
                 <div> 

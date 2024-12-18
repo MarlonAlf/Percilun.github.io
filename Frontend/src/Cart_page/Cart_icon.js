@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+// This Cart_icon Component will change the in_cart atribute in the db
 // The Link component allows for creating navigation links in React applications.
 import { Link } from 'react-router-dom';
 
@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Cart_icon = (props) => {
 
     const id = props.productId;
-    // const id = "1";
     console.log('id-------------------', id);
 
 
@@ -21,8 +20,8 @@ const Cart_icon = (props) => {
     const handleClick = () => {
         setCartClicked(!cartClicked);
 
-        // console.log('id-----clicked--------------', id);
-        fetch(`http://localhost:8000/products/${id}`, {
+       
+        fetch(`http://localhost:5000/update_products/${id}`, {
             method: 'PATCH',
             headers: { "Content-Type":"application/json"},
             body: JSON.stringify({in_cart: 'true' }) 

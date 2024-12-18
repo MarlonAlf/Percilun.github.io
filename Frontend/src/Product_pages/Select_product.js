@@ -2,7 +2,7 @@ const Select_pdct = (prop) => {// Receive onSelect function as props
 
        const onSelect = prop.onSelect; // Contains the function that returns the selected value to the parent component in order to update the page with the selected product
        const currentProduct = prop.currentProduct; // This is the product that comes from paragrams when clicking a specific card
-       const products = prop.selected_group; // Contains the products that had been filtered in the parent component that belong to the same select_group propety
+       const products = prop.selected_group; // Contains the products that had been filtered in the parent component that belong to the same select_group propety,  
 
 
        
@@ -12,6 +12,10 @@ const Select_pdct = (prop) => {// Receive onSelect function as props
            onSelect(event.target.value); // Call onSelect function and pass the selected value, event.target refers to the element that triggered the event
            };
 
+    if (!currentProduct[0]) {
+        // Display a loading message or empty content if images are undefined
+        return <div>Loading images...</div>;
+    }
 
     return ( 
         <div>
@@ -21,12 +25,12 @@ const Select_pdct = (prop) => {// Receive onSelect function as props
             //When a selection happends it is captured by onChange and evoques the function handleSelectChange, 
             <select id="select" onChange={handleSelectChange}>
                 
-                { <option value={currentProduct[0].id}><h2>{currentProduct[0].select_alias}</h2></option>}
+                { <option value={currentProduct[0].id}><h2>{currentProduct[0].allias}</h2></option>}
                 
                 {products.map((item) => {
                     if (item.id !== currentProduct[0].id) {
                     return (
-                        <option value={item.id}> <h2>{item.select_alias}</h2></option>
+                        <option value={item.id}> <h2>{item.allias}</h2></option>
                     )
                     }})
                 }

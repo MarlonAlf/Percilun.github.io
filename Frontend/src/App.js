@@ -31,7 +31,6 @@ function App() {
               <Route path='/SPP/:cardId' element={< SPP />}></Route>  
               <Route path='/TestPage' element={< TestPage />}></Route>
               <Route path='/Admin' element={< Admin />}></Route>        
-      
           </Routes>
         <Newsletter />
         <Footer />

@@ -1,9 +1,13 @@
  //This component template recieves the prop with the ID for already filtered elements
 const Pdct_desc = (props) => {
     
-    const product = props.product[0];
+    const product = props.product && props.product[0];
 
     // I use props.product[0] because props is an object, inside that product is an array with only one element, previously I was using map but was not strictly nessesary
+
+    if (!product) {
+        return <div>Loading product details...</div>;
+    }
 
     return ( 
 

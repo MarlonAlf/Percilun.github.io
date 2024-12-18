@@ -3,16 +3,16 @@ import { useEffect } from "react";
 
 const Pdct_img = (props) => {
     const images = props.product[0];
-    console.log('productsssssssssssssss', props.product);
-    console.log('imagesssssssssssssss', images);
+
 
     // After receiving the images in images.img_ and images.img_2 and so on, I have to add dynamic image paths, this is because the Pdct_img's parent component Single_product_page is using the parameters to filter the data, this causes images not to follow the dynamic  path SPP/parameter. That is why bellow I used PUBLIC_URL and asigned them to constants. The rest of the code remains the mostly the same. It has to be in two steps, because it first have to load this part and then the one inside return()
      
-    const img_1 = `${process.env.PUBLIC_URL}/${images.img_1}`;
-    const img_2 = `${process.env.PUBLIC_URL}/${images.img_2}`;
-    const img_3 = `${process.env.PUBLIC_URL}/${images.img_3}`;
-    const img_4 = `${process.env.PUBLIC_URL}/${images.img_4}`;
-    
+    // Only define img_1, img_2, etc., if `images` is available
+    const img_1 = images ? `${process.env.PUBLIC_URL}${images.img1}` : '';
+    const img_2 = images ? `${process.env.PUBLIC_URL}${images.img2}` : '';
+    const img_3 = images ? `${process.env.PUBLIC_URL}${images.img3}` : '';
+    const img_4 = images ? `${process.env.PUBLIC_URL}${images.img4}` : '';
+        
      // Single product page image swap
 
      const [mainImage, setMainImage] = useState(''); // Initialize state variable with an empty string
@@ -27,6 +27,10 @@ const Pdct_img = (props) => {
         let enteringImage = event.target.src;
         setMainImage(enteringImage);
         event.target.src = exitingImage;
+    }
+    if (!images) {
+        // Display a loading message or empty content if images are undefined
+        return <div>Loading images...</div>;
     }
 
     return (  

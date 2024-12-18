@@ -1,17 +1,17 @@
 import New_arrivals from "../Home_page/New_arrivals";
 import Hero_2 from "./Hero_2";
-import useFetch from "../Common_logic/useFetch";
 import Card from "./Card";
-import { useState } from "react";
+import { useState, useEffect} from "react";
+import useFetchAwait from "../Common_logic/useFetchAwait";
 
 
 const Shop = () => {
 
     // 1. GETTING THE DATA FROM A JSON DATABASE
 
-    // Fetching peoducts from json db using useFetch form Common_logic folder
+    // Fetching products from Flask backend using useFetchAwait form Common_logic folder
 
-    const { data: products, isPending: productsPending, error: productsError} = useFetch('http://localhost:8000/products');
+    const { data: products, isPending: productsPending, error: productsError} = useFetchAwait('http://localhost:5000/get_products');
 
   
     const [selectedCategory, setSelectedCategory] = useState ('All');
@@ -44,7 +44,7 @@ const Shop = () => {
                 <div>
                     {productsError && <div>{ productsError }</div>}
                     {productsPending && <div>Loading....</div>}
-                    {products && <Card products = { products.filter((item) => item.Category == selectedCategory || selectedCategory === 'All') } />}
+                    {products && <Card products = { products.filter((item) => item.category === selectedCategory || selectedCategory === 'All') } />}
                 </div>
             </div>
         </div>

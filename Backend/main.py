@@ -5,11 +5,12 @@ from models import Product
 # By placing /Admin (endpoint) in the browser it by default triggers a GET request and the code bellow handels it
 
 # --------------------------  GET PRODUCTS -----------------------
-@app.route("/Admin", methods=["GET"])
+@app.route("/get_products", methods=["GET"])
 def get_products():
-    products = Product.query.all()# SQLAlchemy takes the data from the database and automatically creates a Python object, ORM
+    # Gets python dictionary data from models.py 
+    products = Product.query.all()
     
-    json_products = list(map(lambda x: x.to_json(), products)) # Converts each product object to JSON dictionary
+    json_products = list(map(lambda x: x.to_json(), products)) # Converts each python dictionary to JSON object
 
     return jsonify({"products": json_products}) # jsonify converts Python data structures (like lists, dicts) into a proper JSON response for sending over HTTP. It's the envelope
 
@@ -20,6 +21,22 @@ def create_product():
     title = request.json.get("title")
     price = request.json.get("price")
     bullet_1 = request.json.get("bullet1")
+    bullet_2 = request.json.get("bullet2")
+    bullet_3 = request.json.get("bullet3")
+    bullet_4 = request.json.get("bullet4")
+    bullet_5 = request.json.get("bullet5")
+    img_1 = request.json.get("img1")
+    img_2 = request.json.get("img2")
+    img_3 = request.json.get("img3")
+    img_4 = request.json.get("img4")
+    category = request.json.get("category")
+    is_new = request.json.get("isNew")
+    group = request.json.get("group")
+    allias = request.json.get("allias")
+    in_cart = request.json.get("inCart")
+
+
+
     # If the above is not being sent from the frontend it displays an error message bellow
     if not title:
         return (
@@ -31,11 +48,65 @@ def create_product():
         )
     if not bullet_1:
         return (
-            jsonify({"message": "You must include bullet"}), 400,
+            jsonify({"message": "You must include bullet 1"}), 400,
         )
+    if not bullet_2:
+        return (
+            jsonify({"message": "You must include bullet 2"}), 400,
+        )
+    if not bullet_3:
+        return (
+            jsonify({"message": "You must include bullet 3"}), 400,
+    )
+    if not bullet_4:
+        return (
+            jsonify({"message": "You must include bullet 4"}), 400,
+    )
+    if not bullet_5:
+        return (
+            jsonify({"message": "You must include bullet 5"}), 400,
+    )
+    if not img_1:
+        return (
+            jsonify({"message": "You must include image 1"}), 400,
+    )
+    if not img_2:
+        return (
+            jsonify({"message": "You must include image 2"}), 400,
+    )
+    if not img_3:
+        return (
+            jsonify({"message": "You must include image 3"}), 400,
+    )
+    if not img_4:
+        return (
+            jsonify({"message": "You must include image 4"}), 400,
+    )
+
+    if not category:
+        return (
+            jsonify({"message": "You must include category"}), 400,
+        )
+    if not is_new:
+        return (
+            jsonify({"message": "You must include new"}), 400,
+        )
+    if not group:
+        return (
+            jsonify({"message": "You must include group"}), 400,
+    )
+    if not allias:
+        return (
+            jsonify({"message": "You must include allias"}), 400,
+    )
+    if not in_cart:
+        return (
+            jsonify({"message": "You must include if in cart"}), 400,
+    )
+    
  
     # If there is data it creates a new product OBJECT
-    new_product = Product(title=title, price=price, bullet_1=bullet_1)
+    new_product = Product(title=title, price=price, bullet_1=bullet_1, bullet_2=bullet_2, bullet_3=bullet_3, bullet_4=bullet_4, bullet_5=bullet_5, img_1=img_1, img_2=img_2, img_3=img_3, img_4=img_4, category=category, is_new=is_new, group=group, allias=allias, in_cart=in_cart)
 
     try: 
         db.session.add(new_product)
@@ -56,6 +127,20 @@ def update_product(user_id):
     product.title = data.get("title", product.title)
     product.price = data.get("price", product.price)
     product.bullet_1 = data.get("bullet1", product.bullet_1)
+    product.bullet_2 = data.get("bullet2", product.bullet_2)
+    product.bullet_3 = data.get("bullet3", product.bullet_3)
+    product.bullet_4 = data.get("bullet4", product.bullet_4)
+    product.bullet_5 = data.get("bullet5", product.bullet_5)
+    product.img_1 = data.get("img1", product.img_1)
+    product.img_2 = data.get("img2", product.img_2)
+    product.img_3 = data.get("img3", product.img_3)
+    product.img_4 = data.get("img4", product.img_4)
+    product.category = data.get("category", product.category)
+    product.is_new = data.get("isNew", product.is_new)
+    product.group = data.get("group", product.group)
+    product.allias = data.get("allias", product.allias)
+    product.in_cart = data.get("inCart", product.in_cart)
+
 
     db.session.commit()
     return jsonify({"message": "Product updtated"}), 200
