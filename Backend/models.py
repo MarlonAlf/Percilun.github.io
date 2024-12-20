@@ -19,6 +19,7 @@ class Product(db.Model):
     group = db.Column(db.String(15), unique=False, nullable=True)
     allias = db.Column(db.String(20), unique=False, nullable=True)
     in_cart = db.Column(db.String(6), unique=False, nullable=True)
+    best_seller = db.Column(db.Integer, nullable=True)
 
     # Here it is creating a function or method that will take the above class (object) and converts them into a python dictionary which has the same structure of a json file but with cammel case by convention.
     def to_json(self):
@@ -39,7 +40,8 @@ class Product(db.Model):
             "isNew": self.is_new, 
             "group": self.group, 
             "allias": self.allias,
-            "inCart": self.in_cart
+            "inCart": self.in_cart,
+            "bestSeller": self.best_seller
          } 
        
     # NOTE: JSON is camel case and python snake

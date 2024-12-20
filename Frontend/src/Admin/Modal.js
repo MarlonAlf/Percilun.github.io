@@ -1,6 +1,6 @@
 
 
-const Modal = ({onSubmit, setIsModalOpen, title, price, bullet1, bullet2, bullet3, bullet4, bullet5, img1, img2, img3, img4, category, isNew, group, allias, inCart, setCategory, setIsNew, setGroup, setAllias, setInCart, setTitle, setPrice, setBullet1, setBullet2, setBullet3, setBullet4, setBullet5, setImg1, setImg2, setImg3, setImg4, modalForCreating}) => {
+const Modal = ({onSubmit, setIsModalOpen, title, price, bullet1, bullet2, bullet3, bullet4, bullet5, img1, img2, img3, img4, category, isNew, group, allias, inCart, bestSeller, setCategory, setIsNew, setGroup, setAllias, setInCart, setTitle, setPrice, setBullet1, setBullet2, setBullet3, setBullet4, setBullet5, setImg1, setImg2, setImg3, setImg4, setBestSeller,  modalForCreating}) => {
 
     const closeModal = () => {
         setIsModalOpen(false)
@@ -142,6 +142,15 @@ const Modal = ({onSubmit, setIsModalOpen, title, price, bullet1, bullet2, bullet
                 value={inCart} 
                 onChange={(e) => setInCart(e.target.value)}
                 autoComplete="off"></input>
+            </div>
+            <div>
+                <label htmlFor="bestSeller">BSR</label>
+                <input type="text"
+                id="bestSeller"
+                value={bestSeller}
+                onChange={(e) => setBestSeller(e.target.value)}
+                autoComplete="off"></input>
+
             </div>
             <button type="submit">{modalForCreating && "Create Product" || !modalForCreating && "Update Product"  }</button>
         </form>

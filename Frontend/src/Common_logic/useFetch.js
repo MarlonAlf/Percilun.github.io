@@ -1,4 +1,9 @@
+
+// NOT IN USE IN THE REACT FLASK VERSION OF THE WEB, I BASED THE ADAPTAION OF useFetchAwait FOR LEARNING PURPUSES OF await fetching data etc.
+
+
 import { useEffect, useState } from "react";
+import useFetchAwait from "./useFetchAwait"
 
 const useFetch = (url) => {
 

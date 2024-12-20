@@ -1,11 +1,11 @@
 import Card from "../Shop_page/Card";
-import useFetch from "../Common_logic/useFetch";
+import useFetchAwait from "../Common_logic/useFetchAwait";
 
 const BestSellers = () => {
 
- // Fetching peoducts from json db using useFetch form Common_logic folder
+    // Fetching peoducts from json db using useFetch form Common_logic folder
 
-    const { data: products, isPending: productsPending, error: productsError} = useFetch('http://localhost:8000/products');
+    const { data: products, isPending: productsPending, error: productsError} = useFetchAwait('http://localhost:5000/get_products');
 
 
     return ( 
@@ -19,7 +19,7 @@ const BestSellers = () => {
         <div className="pdct-container">
             {productsError && <div>{ productsError }</div>}
             {productsPending && <div>Loading....</div>}
-            {products && <Card products = { products.filter((item) => item.New === 'false')} />}        
+            {products && <Card products = { products.filter((item) => item.bestSeller < 10)} />}        
         </div>
     </section>
      );

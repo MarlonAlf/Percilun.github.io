@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 // FontAwesomeIcon is needed to render Font Awesome icons in React components.
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cart_pdcts from './Cart_pdcts';
-import Cart_totals from './Cart_totals';
 
 // The library object is necessary to add icon sets to the Font Awesome library.
 // import { library } from '@fortawesome/fontawesome-svg-core';
@@ -20,8 +19,7 @@ const Cart = () => {
             <h1>#cart</h1>
             <p>Add your coupon code & SAVE up to 70%!</p>
         </div>
-
-        <Cart_pdcts />
+            <Cart_pdcts/>
         </div>   
 
 );

@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Cart_icon = (props) => {
 
     const id = props.productId;
-    console.log('id-------------------', id);
+    // console.log('id-------------------', id);
 
 
     const [cartClicked, setCartClicked] = useState (false);
@@ -21,12 +21,12 @@ const Cart_icon = (props) => {
         setCartClicked(!cartClicked);
 
        
-        fetch(`http://localhost:5000/update_products/${id}`, {
-            method: 'PATCH',
+        fetch(`http://localhost:5000/update_product/${id}`, {
+            method: "PATCH",
             headers: { "Content-Type":"application/json"},
-            body: JSON.stringify({in_cart: 'true' }) 
+            body: JSON.stringify({inCart: 'true' }) 
         }).then(() => {
-            console.log('post complete'); 
+            // console.log('post complete'); 
         }) 
     }
 

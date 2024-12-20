@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import useFetch from "../Common_logic/useFetch";
+import useFetchAwait from "../Common_logic/useFetchAwait";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cart_totals from "./Cart_totals";
 
 const Cart_pdcts = () => {
 
- // Fetching products from json db using useFetch form Common_logic folder
+ // Fetching products from db using useFetchAwait form Common_logic folder
 
- const { data: products, isPending: productsPending, error: productsError} = useFetch('http://localhost:8000/products');
+ const { data: products, isPending: productsPending, error: productsError} = useFetchAwait('http://localhost:5000/get_products');
 
  const [quantity, setQuantity] = useState(1);
 
@@ -16,32 +16,30 @@ const Cart_pdcts = () => {
  const handleQuantityChange = (event, productId) => {
         const newQuantity = (parseInt(event.target.value));
 
-        setQuantity((prevQuantity) => {//When you call setQuantity with a function as an argument React automatically passes the current state value (prevQuantity) to your function as an argument. This allows you to access the previous state and update it accordingly. In summary, prevQuantity is not a function itself; it's a parameter passed to the function you provide to setQuantity. The name prevQuantity is just a convention, and you can name it whatever you want. It represents the previous state value of the quantity state variable. See more bellow.
-            const updatedQuantities = { ...prevQuantity, [productId]: newQuantity };
-            console.log('updateQuantities',updatedQuantities);
-            console.log('newQuantity',newQuantity);
+        setQuantity((prevQuantity) => {const updatedQuantities = { ...prevQuantity, [productId]: newQuantity };
+            // console.log('updateQuantities',updatedQuantities);
+            // console.log('newQuantity',newQuantity);
             return (updatedQuantities);     
      })};
 
+     // DELETE PRODUCTS
      var total = 0;
 
      const handleDelete = (id) => {
        
-
-        console.log('id-----clicked--------------', id);
-        fetch(`http://localhost:8000/products/${id}`, {
+        fetch(`http://localhost:5000/update_product/${id}`, {
             method: 'PATCH',
             headers: { "Content-Type":"application/json"},
-            body: JSON.stringify({in_cart: 'false' })
+            body: JSON.stringify({inCart: 'false' })
         }).then(() => {
-            console.log('post complete'); 
+            // console.log('post complete'); 
         })
-        setQuantity = 0;
- 
+        setQuantity("0");
+        console.log('id-----clicked--------------', id);
+
     }
 
  return (    
-
     <div id="cart">
         <table className="cart-table">
             <thead>
@@ -57,20 +55,19 @@ const Cart_pdcts = () => {
             <tbody>
                 {productsError && <div>{ productsError }</div>}
                 {productsPending && <div>Loading....</div>}
+                {products && products.filter(product => product.inCart == 'true').map((product) => {
+                    const imagePath = `${process.env.PUBLIC_URL}${product.img1}`;
 
-                {/* select the products that have been added to the cart */}
-                {products && products.filter(product => product.in_cart == 'true').map((product) => {
-                    const subTotal = Number(quantity[product.id] * product.price || product.price)  // Number will keep the integer a number
+                    const subTotal = Number(quantity[product.id] * product.price || product.price)  // Number will keep the  number an integer
                     total += subTotal;
                     return(
                         <tr>
                             <td>
-                                <Link to="#" onClick={() => handleDelete(product.id)}>
+                                <button to="#" onClick={() => handleDelete(product.id)}>
                                         <FontAwesomeIcon icon={['fas', 'fa-times-circle']} />
-                                </Link>
+                                </button>
                             </td>
-                            <td><img src={product.img_1}/></td>
-                        
+                            <td><img src={imagePath}/></td>                    
                             <td>{ product.title }</td>
                             <td>€{ product.price }</td>
                             <td>
@@ -92,7 +89,7 @@ const Cart_pdcts = () => {
             </tbody>
         </table>
         <div>
-            <Cart_totals total ={total}/>
+            {/* <Cart_totals total ={total}/> */}
         </div>
     </div>
     

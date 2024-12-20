@@ -38,6 +38,7 @@ const Admin = () => {
     const [group, setGroup] = useState("");
     const [allias, setAllias] = useState("");
     const [inCart, setInCart] = useState("");
+    const [bestSeller, setBestSeller] = useState("");
 
     const closeModal = () => {
         setIsModalOpen(false)
@@ -62,29 +63,30 @@ const Admin = () => {
         setGroup("");
         setAllias("");
         setInCart("");
+        setBestSeller("");
     }
     
     const openUpdateModal = (product) => {
         setModalForCreating(false);
         setIsModalOpen(true);
-        console.log('bullet 1', product)
-        setCurrenttId(product.id)
-        setTitle(product.title)
-        setPrice(product.price)
-        setBullet1(product.bullet1)
-        setBullet2(product.bullet2)
-        setBullet3(product.bullet3)
-        setBullet4(product.bullet4)
-        setBullet5(product.bullet5)
-        setImg1(product.img1)
-        setImg2(product.img2)
-        setImg3(product.img3)
-        setImg4(product.img4)
-        setCategory(product.category)
-        setIsNew(product.isNew)
-        setGroup(product.group)
-        setAllias(product.allias)
-        setInCart(product.inCart)
+        setCurrenttId(product.id);
+        setTitle(product.title);
+        setPrice(product.price);
+        setBullet1(product.bullet1);
+        setBullet2(product.bullet2);
+        setBullet3(product.bullet3);
+        setBullet4(product.bullet4);
+        setBullet5(product.bullet5);
+        setImg1(product.img1);
+        setImg2(product.img2);
+        setImg3(product.img3);
+        setImg4(product.img4);
+        setCategory(product.category);
+        setIsNew(product.isNew);
+        setGroup(product.group);
+        setAllias(product.allias);
+        setInCart(product.inCart);
+        setBestSeller(product.bestSeller);
     }
 
     const onSubmit = async (e) => {
@@ -92,7 +94,7 @@ const Admin = () => {
         
         e.preventDefault() // Prevents page refreshing which is the default
 
-        const data = { title, price, bullet1, bullet2, bullet3, bullet4, bullet5, img1, img2, img3, img4, category, isNew, group, allias, inCart}// This is called object shorthand, where if the key and the variable name are the same, you can omit the repetition. So, it’s the same as  title: title, price: price, bullet1: bullet1, but more concise. This object will be sent to the server as JSON
+        const data = { title, price, bullet1, bullet2, bullet3, bullet4, bullet5, img1, img2, img3, img4, category, isNew, group, allias, inCart, bestSeller}// This is called object shorthand, where if the key and the variable name are the same, you can omit the repetition. So, it’s the same as  title: title, price: price, bullet1: bullet1, but more concise. This object will be sent to the server as JSON
 
         // -----------------------------  CREATE PRODUCT -------------------------------------
         if(modalForCreating){      
@@ -157,12 +159,13 @@ const Admin = () => {
                     <th>Bullet 3</th>
                     <th>Bullet 4</th>
                     <th>Bullet 5</th> */}
-                    <th>Image 1</th>
+                    {/* <th>Image 1</th> */}
                     {/* <th>Category</th>
                     <th>New</th>
                     <th>Group</th>
                     <th>Allias</th>
                     <th>In Cart</th> */}
+                    <th>Best Seller</th>
                     <th>Actions</th>
                 </thead>
                 <tbody>
@@ -175,12 +178,15 @@ const Admin = () => {
                         <td>{product.bullet3}</td>
                         <td>{product.bullet4}</td> 
                         <td>{product.bullet5}</td>*/}
-                        <td>{product.img1}</td>
+                        {/* <td>{product.img1}</td> */}
                         {/* <td>{product.category}</td>
                         <td>{product.isNew}</td>
                         <td>{product.group}</td>
                         <td>{product.allias}</td>
+                        <td>{product.inCart}</td> 
                         <td>{product.inCart}</td> */}
+                        <td>{product.bestSeller}</td> 
+                        
                         <td>
                             <button onClick={() => openUpdateModal(product)}>Update</button>
                             <button onClick={() => deleteProduct(product.id)}>Delete</button>                        
@@ -192,7 +198,7 @@ const Admin = () => {
         {/* MODAL */}
         <button onClick={openCreateModal}>Open Create New Product</button>
         { isModalOpen && <div className="modal">
-            {<Modal onSubmit={onSubmit} setIsModalOpen={setIsModalOpen} title={title}  price={price} bullet1={bullet1} bullet2={bullet2} bullet3={bullet3} bullet4={bullet4} bullet5={bullet5} img1={img1} img2={img2} img3={img3} img4={img4} category={category} isNew={isNew} group={group} allias={allias} inCart={inCart} setTitle={setTitle} setPrice={setPrice} setBullet1={setBullet1} setBullet2={setBullet2} setBullet3={setBullet3} setBullet4={setBullet4} setBullet5={setBullet5} setImg1={setImg1} setImg2={setImg2} setImg3={setImg3} setImg4={setImg4} setCategory={setCategory} setIsNew={setIsNew} setGroup={setGroup} setAllias={setAllias} setInCart={setInCart} modalForCreating={modalForCreating}/>}
+            {<Modal onSubmit={onSubmit} setIsModalOpen={setIsModalOpen} title={title}  price={price} bullet1={bullet1} bullet2={bullet2} bullet3={bullet3} bullet4={bullet4} bullet5={bullet5} img1={img1} img2={img2} img3={img3} img4={img4} category={category} isNew={isNew} group={group} allias={allias} inCart={inCart} bestSeller={bestSeller} setTitle={setTitle} setPrice={setPrice} setBullet1={setBullet1} setBullet2={setBullet2} setBullet3={setBullet3} setBullet4={setBullet4} setBullet5={setBullet5} setImg1={setImg1} setImg2={setImg2} setImg3={setImg3} setImg4={setImg4} setCategory={setCategory} setIsNew={setIsNew} setGroup={setGroup} setAllias={setAllias} setInCart={setInCart} setBestSeller={setBestSeller} modalForCreating={modalForCreating}/>}
           
         </div>
         }

@@ -18,7 +18,11 @@ const Cart_totals = (props) => {
             <div className="total">
                 <table className="total-table">
                     <thead>
-                        <h3>Cart Totals</h3>
+                        <tr>
+                            <th>
+                                <h3>Cart Totals</h3>
+                            </th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>

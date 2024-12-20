@@ -7,11 +7,11 @@ const useFetchAwait = (url) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        setTimeout(() => {      
+        // setTimeout(() => {      
             const fetchData = async () => {
                 try {
                     const response = await fetch(url);
-                    console.log(response)
+                    // console.log(response)
                     if(!response.ok) {
                         throw new Error (" ! ----- Error receiving data ----- !")
                     }else{
@@ -20,20 +20,19 @@ const useFetchAwait = (url) => {
                         setError(null);
                         setIsLoading(false);
                         setData(data.products);
-                        console.log("data in fetch", data);
+                        // console.log("data in fetch", data);
                     }   
                 }catch(error){
-                    console.error(error);
+                    // console.error(error);
                     setIsLoading(false);
                     setError(error.message);
                 }finally{  
-                    console.log('finally');
-                }      
-                
+                    // console.log('finally');
+                }                      
             }
             
         fetchData();
-    }, 1000);           
+    // }, 1000);           
         }, [url]);
  
     return {data, isLoading, error};

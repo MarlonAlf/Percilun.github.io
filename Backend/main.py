@@ -12,7 +12,7 @@ def get_products():
     
     json_products = list(map(lambda x: x.to_json(), products)) # Converts each python dictionary to JSON object
 
-    return jsonify({"products": json_products}) # jsonify converts Python data structures (like lists, dicts) into a proper JSON response for sending over HTTP. It's the envelope
+    return jsonify({"products": json_products}) # jsonify converts Python data structures (like lists, dicts) into a propper JSON response for sending over HTTP. It's the envelope
 
 # --------------------------  CREATE PRODUCT -----------------------    
 # This is listening when a POST request is send in /create_product page (endpoint) of the front end.    
@@ -34,6 +34,7 @@ def create_product():
     group = request.json.get("group")
     allias = request.json.get("allias")
     in_cart = request.json.get("inCart")
+    best_seller = request.json.get("bestSeller")
 
 
 
@@ -103,10 +104,14 @@ def create_product():
         return (
             jsonify({"message": "You must include if in cart"}), 400,
     )
+    if not best_seller:
+        return (
+            jsonify({"message": "You must include best seller rang"}), 400,
+        )
     
  
     # If there is data it creates a new product OBJECT
-    new_product = Product(title=title, price=price, bullet_1=bullet_1, bullet_2=bullet_2, bullet_3=bullet_3, bullet_4=bullet_4, bullet_5=bullet_5, img_1=img_1, img_2=img_2, img_3=img_3, img_4=img_4, category=category, is_new=is_new, group=group, allias=allias, in_cart=in_cart)
+    new_product = Product(title=title, price=price, bullet_1=bullet_1, bullet_2=bullet_2, bullet_3=bullet_3, bullet_4=bullet_4, bullet_5=bullet_5, img_1=img_1, img_2=img_2, img_3=img_3, img_4=img_4, category=category, is_new=is_new, group=group, allias=allias, in_cart=in_cart, best_seller=best_seller)
 
     try: 
         db.session.add(new_product)
@@ -140,6 +145,7 @@ def update_product(user_id):
     product.group = data.get("group", product.group)
     product.allias = data.get("allias", product.allias)
     product.in_cart = data.get("inCart", product.in_cart)
+    product.best_seller = data.get("bestSeller", product.best_seller)
 
 
     db.session.commit()
