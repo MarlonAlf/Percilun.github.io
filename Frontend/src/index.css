@@ -723,20 +723,37 @@ text-decoration: none;
     font-size: .4em;
 }
 
-#quantity, #add {
-    width: 4vw;
+/* #quantity, #add {
+    width: 12vw;
     height: 4vw;
     font-size: .9em;
     border-radius: .3vw;
     border: none;
     margin-bottom: .9vw;
+} */
+
+.add_to_cart {
+    height: 6vw;
+    width: 16vw;
+    background-color: var(--fourth);
+    cursor: pointer;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: .5rem;
+    color: var(--fifth);
 }
 
-#add {
+.added_to_cart {
+    height: 6vw;
     width: 12vw;
-    background-color: var(--fourth);
-    color: var(--cream);
+    background-color: var(--fifth);
     cursor: pointer;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 5rem;
+    color: var(--fourth);
+    font-size: bold;
+
 }
 
 #listing-desc h3 {
@@ -1005,6 +1022,13 @@ text-decoration: none;
     text-align: center;
 }
 
+.delete_button {
+    color: var(--second);
+    font-size: 3rem;
+    background: none;
+    background-color: red;
+    border-radius: 4rem;
+}
 /*---------Coupon and Cart Total----------*/
 
 .coupon {

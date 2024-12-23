@@ -1,6 +1,6 @@
 import New_arrivals from "../Home_page/New_arrivals";
 import Hero_2 from "./Hero_2";
-import Card from "./Card";
+import Card from "./Cards";
 import { useState, useEffect} from "react";
 import useFetchAwait from "../Common_logic/useFetchAwait";
 

@@ -6,18 +6,19 @@ import Pdct_bullets from "./Product_bullets";
 import Pdct_img from "./Product_images";
 import useFetchAwait from "../Common_logic/useFetchAwait";
 import { useParams } from 'react-router-dom';
+import Add_cart from "../Cart_page/Add_cart";
 
 
 const SPP = () => {
     const { cardId } = useParams();
     
    
-      // Fetching peoducts from json db using useFetch form Common_logic folder
+      // Fetching products from db using useFetchAwait from Common_logic folder
       
      const { data: products, isLoading: productsLoading, error: productsError} = useFetchAwait("http://127.0.0.1:5000/get_products");
 
 
-    const currentProduct = products.filter((item) => item.id === parseInt(cardId)) || [];
+    const currentProduct = products?.filter((item) => item.id === parseInt(cardId)) || [];
     const group = currentProduct.length > 0 ? currentProduct[0].group : null;
 
      if (products !== null && products.leng > 0) {
@@ -53,6 +54,8 @@ const SPP = () => {
 
 
             {/* Display fetched images */}
+            {productsError && <div>{ productsError }</div>}
+            {productsLoading && <div>Loading....</div>}
             {products && <Pdct_img product = {products.filter((item) => item.id === parseInt(selectedAnimal))}/>}            
 
             <div id="listing-desc"> 
@@ -69,8 +72,7 @@ const SPP = () => {
             
                 </div>                  
                 <div> 
-                    <input type="number" value="1"  id="quantity" />
-                    <input type="submit" value="Add To Cart" autoComplete="off"  id="add" />
+                  {currentProduct?.length > 0 && <Add_cart currentProduct={currentProduct}/>}
                 </div>
                     {/* Display fetched details */}
                     {productsError && <div>{ productsError }</div>}

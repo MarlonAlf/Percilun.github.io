@@ -1,9 +1,9 @@
-import Card from "../Shop_page/Card";
+import Card from "../Shop_page/Cards";
 import useFetchAwait from "../Common_logic/useFetchAwait";
 
 const BestSellers = () => {
 
-    // Fetching peoducts from json db using useFetch form Common_logic folder
+    // Fetching products from json db using useFetch form Common_logic folder
 
     const { data: products, isPending: productsPending, error: productsError} = useFetchAwait('http://localhost:5000/get_products');
 

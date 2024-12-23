@@ -1,7 +1,6 @@
 const Pdct_bullets = (props) => {
         const bullet = props.product && props.product[0];
-        console.log('prop--------', props)
-        console.log('bullet--------', bullet)
+       
         
         if (!bullet) {
             return <div>Loading product details...</div>;

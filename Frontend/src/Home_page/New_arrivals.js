@@ -1,5 +1,5 @@
 import useFetchAwait from "../Common_logic/useFetchAwait";
-import Card from "../Shop_page/Card";
+import Card from "../Shop_page/Cards";
 import {useState, useEffect } from "react";
 import useFetch from "../Common_logic/useFetch";
 

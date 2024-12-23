@@ -63,7 +63,7 @@ const Cart_pdcts = () => {
                     return(
                         <tr>
                             <td>
-                                <button to="#" onClick={() => handleDelete(product.id)}>
+                                <button  className="delete_button" to="#" onClick={() => handleDelete(product.id)}>
                                         <FontAwesomeIcon icon={['fas', 'fa-times-circle']} />
                                 </button>
                             </td>
