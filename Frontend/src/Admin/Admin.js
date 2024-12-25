@@ -159,12 +159,12 @@ const Admin = () => {
                     <th>Bullet 3</th>
                     <th>Bullet 4</th>
                     <th>Bullet 5</th> */}
-                    {/* <th>Image 1</th> */}
+                    <th>Image 1</th>
                     {/* <th>Category</th>
                     <th>New</th>
                     <th>Group</th>
-                    <th>Allias</th>
-                    <th>In Cart</th> */}
+                    <th>Allias</th>*/}
+                    <th>In Cart</th> 
                     <th>Best Seller</th>
                     <th>Actions</th>
                 </thead>
@@ -178,13 +178,12 @@ const Admin = () => {
                         <td>{product.bullet3}</td>
                         <td>{product.bullet4}</td> 
                         <td>{product.bullet5}</td>*/}
-                        {/* <td>{product.img1}</td> */}
+                        <td><img className="admin-img" src={product.img1}/></td>
                         {/* <td>{product.category}</td>
                         <td>{product.isNew}</td>
                         <td>{product.group}</td>
-                        <td>{product.allias}</td>
+                        <td>{product.allias}</td>*/}
                         <td>{product.inCart}</td> 
-                        <td>{product.inCart}</td> */}
                         <td>{product.bestSeller}</td> 
                         
                         <td>

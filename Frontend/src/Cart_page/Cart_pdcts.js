@@ -1,19 +1,22 @@
 import { Link } from "react-router-dom";
 import useFetchAwait from "../Common_logic/useFetchAwait";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cart_totals from "./Cart_totals";
 
 const Cart_pdcts = () => {
 
- // Fetching products from db using useFetchAwait form Common_logic folder
+    const [quantity, setQuantity] = useState(1);
+    const [refreshKey, setRefreshKey] = useState(0); //  URL (?key=${refreshKey}) Trick to force rerendering, if the backend is not configured to specifically check for query parameters it just ignore them.
 
- const { data: products, isPending: productsPending, error: productsError} = useFetchAwait('http://localhost:5000/get_products');
+    // Fetching products from db using useFetchAwait form Common_logic folder
 
- const [quantity, setQuantity] = useState(1);
+    const { data: products, isPending: productsPending, error: productsError} = useFetchAwait(`http://localhost:5000/get_products?key=${refreshKey}`);
 
 
- const handleQuantityChange = (event, productId) => {
+
+
+    const handleQuantityChange = (event, productId) => {
         const newQuantity = (parseInt(event.target.value));
 
         setQuantity((prevQuantity) => {const updatedQuantities = { ...prevQuantity, [productId]: newQuantity };
@@ -33,10 +36,10 @@ const Cart_pdcts = () => {
             body: JSON.stringify({inCart: 'false' })
         }).then(() => {
             // console.log('post complete'); 
+            setRefreshKey((prevKey) => prevKey + 1);
         })
         setQuantity("0");
         console.log('id-----clicked--------------', id);
-
     }
 
  return (    
@@ -63,9 +66,9 @@ const Cart_pdcts = () => {
                     return(
                         <tr>
                             <td>
-                                <button  className="delete_button" to="#" onClick={() => handleDelete(product.id)}>
+                                <a  className="delete_icone" to="#" onClick={() => handleDelete(product.id)}>
                                         <FontAwesomeIcon icon={['fas', 'fa-times-circle']} />
-                                </button>
+                                </a>
                             </td>
                             <td><img src={imagePath}/></td>                    
                             <td>{ product.title }</td>
@@ -89,7 +92,7 @@ const Cart_pdcts = () => {
             </tbody>
         </table>
         <div>
-            {/* <Cart_totals total ={total}/> */}
+            <Cart_totals total ={total}/>
         </div>
     </div>
     

@@ -22,7 +22,7 @@ const Cart = () => {
             <Cart_pdcts/>
         </div>   
 
-);
+    );
 }
  
 export default Cart;

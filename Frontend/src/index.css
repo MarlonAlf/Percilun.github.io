@@ -1004,13 +1004,12 @@ text-decoration: none;
     padding: 1vw;
 }
 
-.cart-table a{
+/* .cart-table a{
     color: red;
-}
+} */
 
 .cart-table img{
     width: 10vw;
-
 }
 
 .cart-table input{
@@ -1022,13 +1021,16 @@ text-decoration: none;
     text-align: center;
 }
 
-.delete_button {
-    color: var(--second);
-    font-size: 3rem;
+.delete_icone {
+    /* color: var(--second); */
+    color: red;
+    font-size: 1.5rem;
     background: none;
-    background-color: red;
-    border-radius: 4rem;
+    cursor: pointer;
+    /* background-color: red; */
+    /* border-radius: 10rem; */
 }
+
 /*---------Coupon and Cart Total----------*/
 
 .coupon {
@@ -1127,6 +1129,10 @@ text-decoration: none;
     font-size: .8rem;
 }
 
+.admin-img {
+    width: 4rem;
+}
+
 .modal {
     position: fixed;
     z-index: 1000;
@@ -1151,9 +1157,7 @@ text-decoration: none;
     border: 10px solid;
 }
 
-.modal-content div {
-    /* min-width: 100rem; */
-}
+
 
 .close {
     float: right;
